@@ -17,45 +17,42 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌸 PETALS */
+/* PETALS */
 .petal {
   position: fixed;
   top: -10%;
   pointer-events: none;
-  animation: fall linear infinite, fadeIn 2s forwards;
-  opacity: 0;
+  animation: fall linear infinite;
+  opacity: 0.7;
   z-index: 1;
 }
-@keyframes fall { to { transform: translateY(120vh) rotate(360deg); } }
-@keyframes fadeIn { to { opacity: 0.7; } }
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
+}
 
-/* POSTER PAGE */
+/* POSTER */
 .poster-page {
   position: fixed;
   inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: #f4e8d6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 20;
   cursor: pointer;
-  transition: opacity 0.8s;
-  flex-direction: column;
+  transition: opacity .8s;
 }
 .poster-page.hide { opacity: 0; pointer-events: none; }
 .poster-page img {
   width: 80%;
   max-width: 500px;
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-  transition: transform 0.5s;
 }
-.poster-page img:hover { transform: scale(1.02); }
 .poster-page .overlay {
   margin-top: 20px;
   font-family: 'Great Vibes', cursive;
   font-size: 2.5em;
-  color: #4a3b2f;
 }
 
 /* ENVELOPE */
@@ -66,180 +63,142 @@ body {
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 400px;
-  height: 200px;
   z-index: 15;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  pointer-events: none;
   perspective: 1000px;
 }
 .envelope .flap {
-  width: 100%;
   height: 100px;
-  background: linear-gradient(#fefaf3 0%, #f0e3d2 100%);
+  background: linear-gradient(#fefaf3,#f0e3d2);
   border: 2px solid #d6c6b8;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Great Vibes', cursive;
-  font-size: 2em;
-  transform-origin: bottom center;
-  transition: transform 1s ease-in-out;
+  transform-origin: bottom;
+  transition: transform 1s;
 }
 .envelope.open .flap { transform: rotateX(-180deg); }
 .envelope .body {
-  width: 100%;
   height: 100px;
   background: #fffdf5;
   border: 2px solid #d6c6b8;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.1em;
   font-style: italic;
-  color: #4a3b2f;
-  pointer-events: none;
 }
 
-/* INVITATION CARD */
+/* INVITE */
 .invite {
   max-width: 800px;
   margin: 80px auto;
-  background: #fffdf5;
   padding: 50px 30px;
+  background: #fffdf5;
   border-radius: 25px;
+  border: 2px solid #e0d8c0;
   box-shadow: 0 25px 50px rgba(0,0,0,.15);
   opacity: 0;
   transition: opacity 1s;
-  border: 2px solid #e0d8c0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(0,0,0,0.01),
-    rgba(0,0,0,0.01) 1px,
-    transparent 1px,
-    transparent 20px
-  );
 }
 .invite.show { opacity: 1; }
-h1.invite-title { font-family: 'Great Vibes', cursive; font-size: 3.5em; margin-bottom:10px; letter-spacing: 1px; }
-.subtitle { font-size: 1.2em; margin-bottom: 40px; font-style: italic; }
 
-/* HORIZONTAL BUTTONS */
+.invite-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5em;
+}
+.subtitle { font-style: italic; margin-bottom: 40px; }
+
+/* MENU */
 .menu {
   display: flex;
-  justify-content: space-around;
   gap: 15px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  justify-content: space-around;
 }
 .menu button {
-  flex: 1 1 30%;
+  flex: 1;
   min-width: 120px;
+  padding: 18px;
+  border-radius: 20px;
   background: #f5ede4;
   border: 1px solid #d6c6b8;
-  border-radius: 20px;
-  padding: 18px;
-  font-size: 1.1em;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s;
 }
-.menu button:hover { background: #eae1d5; }
 
-/* SECTIONS FULL WIDTH */
+/* SECTIONS */
 .section {
   display: none;
-  padding: 20px 15px;
-  font-size:1.1em;
-  margin-top:10px;
-  background:#f9f5ee;
-  border-radius:15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #f9f5ee;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
 }
 .section.active { display: block; }
 
-/* MESSAGES */
-form input, form textarea {
+/* FORMS */
+input, textarea {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  font-family: Georgia, serif;
-  font-size: 1em;
-  border: 1px solid #d6c6b8;
   border-radius: 10px;
-  background: #fcfaf5;
+  border: 1px solid #d6c6b8;
 }
 form button {
   background: #8d6e63;
-  color: #fff;
+  color: white;
   padding: 12px 30px;
-  border: none;
   border-radius: 20px;
-  cursor: pointer;
-  margin-top: 10px;
+  border: none;
 }
-.messages { margin-top: 20px; text-align: left; }
+
+/* MESSAGE */
 .message {
   background: #f3ebe2;
   padding: 14px;
   border-radius: 14px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   border-left: 4px solid #d6c6b8;
 }
-.message strong { display: block; }
 
-/* WhatsApp Share */
+/* WHATSAPP */
 .whatsapp {
-  margin-top: 20px;
   background: #25D366;
-  color: #fff;
-  border: none;
+  color: white;
   padding: 14px 25px;
   border-radius: 20px;
-  font-size: 1.2em;
-  cursor: pointer;
+  border: none;
+  margin-top: 20px;
 }
-.whatsapp:hover { background: #1ebe5b; }
-
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PETALS -->
 <script>
-const petals = [];
-const count = innerWidth < 768 ? 15 : 25;
-for(let i=0;i<count;i++){
+for(let i=0;i<25;i++){
   const p=document.createElement('div');
   p.className='petal';
   p.textContent='🌸';
   p.style.left=Math.random()*100+'vw';
   p.style.fontSize=14+Math.random()*10+'px';
   p.style.animationDuration=8+Math.random()*10+'s';
-  p.style.animationDelay=Math.random()*3+'s';
   document.body.appendChild(p);
-  petals.push(p);
 }
-window.addEventListener('scroll',()=>{
-  const o=Math.max(0,0.7-scrollY/500);
-  petals.forEach(p=>p.style.opacity=o);
-});
 </script>
 
-<!-- POSTER PAGE -->
+<!-- POSTER -->
 <div class="poster-page" id="posterPage">
-  <img src="poster.jpg" alt="Ahmed & Doaa">
+  <img src="poster.jpg">
   <div class="overlay">Tap to Open Envelope</div>
 </div>
 
@@ -249,120 +208,116 @@ window.addEventListener('scroll',()=>{
   <div class="body">Tap to open your invitation</div>
 </div>
 
-<!-- INVITATION CARD -->
+<!-- INVITE -->
 <div class="invite" id="invite">
   <h1 class="invite-title">Ahmed & Doaa</h1>
-  <p class="subtitle">
-    joyfully invite you to celebrate their engagement<br><br>
-    📅 2 / 2 / 2026 &nbsp;&nbsp; ⏰ 7:00 PM
-  </p>
+  <p class="subtitle">📅 2 / 2 / 2026 — ⏰ 7:00 PM</p>
 
   <div class="menu">
     <button onclick="openSection('location')">📍 Location</button>
-    <button onclick="openSection('party')">🎉 The Party</button>
-    <button onclick="openSection('message')">💌 Leave a Message</button>
+    <button onclick="openSection('party')">🎉 Party</button>
+    <button onclick="openSection('message')">💌 Messages</button>
   </div>
 
   <div id="location" class="section">
     <p><strong>El-baron hall - October panorama club - salah salem street</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.123456789!2d31.234567!3d30.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145817123456789%3A0xabcdef123456!2sEvent%20Location!5e0!3m2!1sen!2seg!4v1700000000000" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." width="100%" height="300"></iframe>
     <p><a href="https://maps.app.goo.gl/noabXgBs4jchyzeTA" target="_blank">Open in Google Maps</a></p>
   </div>
 
   <div id="party" class="section">
-    <p>An intimate evening filled with love, laughter, and joy.<br>We look forward to celebrating with you 🤍</p>
+    <p>An intimate evening filled with love 🤍</p>
   </div>
 
+  <!-- MESSAGE SECTION -->
   <div id="message" class="section">
+
+    <!-- SEND MESSAGE (ALWAYS VISIBLE) -->
     <form id="msgForm">
       <input required placeholder="Your name">
       <textarea required placeholder="Your message"></textarea>
-      <button type="submit">Send</button>
+      <button type="submit">Send Message</button>
     </form>
-    <div class="messages" id="messages"></div>
+
+    <hr style="margin:30px 0">
+
+    <!-- VIEW MESSAGES (PASSWORD) -->
+    <div id="viewGate">
+      <p><strong>Enter password to view messages</strong></p>
+      <input type="password" id="viewPass">
+      <button onclick="unlockMessages()">View Messages</button>
+      <p id="passError" style="color:red; display:none;">Wrong password</p>
+    </div>
+
+    <div id="messagesBox" style="display:none;"></div>
+
   </div>
 
   <button class="whatsapp" onclick="shareWhatsApp()">Share via WhatsApp</button>
 </div>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "ahmeddoaaengagement.firebaseapp.com",
-  databaseURL: "https://ahmeddoaaengagement-default-rtdb.firebaseio.com/",
-  projectId: "ahmeddoaaengagement",
-  storageBucket: "ahmeddoaaengagement.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-</script>
+/* MUSIC ON FIRST CLICK */
+document.addEventListener('click',()=>{
+  const m=document.getElementById('bgMusic');
+  if(m.paused) m.play().catch(()=>{});
+},{once:true});
 
-<script>
-/* POSTER → ENVELOPE → INVITE */
-const posterPage=document.getElementById('posterPage');
-const envelope=document.getElementById('envelope');
-const invite=document.getElementById('invite');
-const music = document.getElementById('bgMusic');
-
-posterPage.onclick = () => {
-  posterPage.classList.add('hide');
-  envelope.style.pointerEvents='auto';
-  // Play music on first click
-  music.play().catch(()=>{});
-};
-
-envelope.onclick = () => {
+/* FLOW */
+posterPage.onclick=()=>posterPage.classList.add('hide');
+envelope.onclick=()=>{
   envelope.classList.add('open');
   setTimeout(()=>{
     envelope.style.display='none';
     invite.classList.add('show');
-    invite.scrollIntoView({behavior:'smooth'});
   },1000);
 };
 
-/* OPEN ONLY ONE SECTION AT A TIME */
+/* SECTIONS */
 function openSection(id){
-  document.querySelectorAll('.section').forEach(s=>s.id!==id?s.classList.remove('active'):s.classList.add('active'));
-}
-
-/* MESSAGES USING FIREBASE */
-const form=document.getElementById('msgForm');
-const box=document.getElementById('messages');
-
-function render(messages){
-  box.innerHTML='';
-  messages.forEach(m=>{
-    box.innerHTML+=`<div class="message"><strong>${m.name}</strong>${m.text}</div>`;
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.toggle('active',s.id===id);
   });
 }
 
-form.onsubmit=e=>{
+/* FIREBASE */
+const DB_URL="https://ahmeddoaaengagement-default-rtdb.firebaseio.com/messages.json";
+
+/* SEND MESSAGE */
+msgForm.onsubmit=e=>{
   e.preventDefault();
-  const [n,t]=form.elements;
-  const msg = {name:n.value,text:t.value};
-  db.ref('messages').push(msg);
-  form.reset();
+  fetch(DB_URL,{
+    method:'POST',
+    body:JSON.stringify({
+      name:msgForm[0].value,
+      text:msgForm[1].value
+    })
+  }).then(()=>{
+    msgForm.reset();
+    alert("Message sent ❤️");
+  });
 };
 
-/* FETCH MESSAGES LIVE */
-db.ref('messages').on('value', snapshot => {
-  const msgs = [];
-  snapshot.forEach(snap=>{
-    msgs.unshift(snap.val());
+/* VIEW MESSAGES */
+const VIEW_PASSWORD="doaa&ahmed";
+function unlockMessages(){
+  if(viewPass.value!==VIEW_PASSWORD){
+    passError.style.display="block";
+    return;
+  }
+  viewGate.style.display="none";
+  messagesBox.style.display="block";
+  fetch(DB_URL).then(r=>r.json()).then(d=>{
+    messagesBox.innerHTML='';
+    if(d) Object.values(d).reverse().forEach(m=>{
+      messagesBox.innerHTML+=`<div class="message"><strong>${m.name}</strong>${m.text}</div>`;
+    });
   });
-  render(msgs);
-});
+}
 
-/* WhatsApp Share */
+/* WHATSAPP */
 function shareWhatsApp(){
-  const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent("You are invited to Ahmed & Doaa's engagement! 💍✨");
-  window.open(`https://wa.me/?text=${text}%20${url}`,'_blank');
+  window.open(`https://wa.me/?text=${encodeURIComponent("You're invited 💍 "+location.href)}`);
 }
 </script>
 
